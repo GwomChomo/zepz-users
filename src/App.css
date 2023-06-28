@@ -3,6 +3,14 @@
     box-shadow: 0 0 0 0.2px grey;
 }
 
+.clickable {
+    cursor: pointer;
+}
+
+.right-shadow {
+    box-shadow: 3px 2px 3px 1px lightgrey;
+}
+
 .rounded {
     overflow: hidden;
     border-radius: 10%;

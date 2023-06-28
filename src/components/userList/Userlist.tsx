@@ -1,25 +1,29 @@
 import React from 'react';
-import {Accordion, Col, Row} from "react-bootstrap";
-import UserListItem from "../UserlistItem.component";
+import {Accordion, Col, Row, Spinner} from "react-bootstrap";
+import UserListItem from "../userListItem/UserListItem";
 import './Userlist.css';
+import {User} from "../../hooks/fetchUsers";
 
 interface UserListProps {
-    data?: any[];
+    users: User[];
+    loading: boolean;
+    error: any;
     children?: React.ReactNode;
 }
 
 const UserList: React.FC<UserListProps> = (props) => {
-    const { children } = props;
+    const { users, error, loading, children } = props;
     return (
         <div style={{ display: 'flex', flexDirection: 'column'}}>
             <Row>
-                <Col xs={4} md={5}>
+                <Col md={6}>
                     {children}
                 </Col>
             </Row>
             <Accordion>
-                {[1,2,3].map((i, index) => <UserListItem index={index} />)}
+                {users && users.map((user, index) => <UserListItem index={index} user={user} />)}
             </Accordion>
+            <div style={{ alignSelf: 'center'}}>{loading && <Spinner animation="grow" />}</div>
         </div>
     )
 }
