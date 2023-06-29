@@ -93,7 +93,7 @@ const App = () => {
                localStorage.setItem('followingList', JSON.stringify(rest));
 
                setFollowingList(Object.values(rest));
-               setFollowingCount(followingCount - 1);
+               if (toRemove) setFollowingCount(followingCount - 1);
            }
         }
     }

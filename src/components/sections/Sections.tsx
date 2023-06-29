@@ -41,7 +41,7 @@ const Sections = () => {
                     An error occurred. Could not fetch data!
                 </Alert>}
                 {!error && (
-                    <UserList users={searchString ? searchResults : data} loading={loading}>
+                    <UserList users={searchString ? searchResults : data} loading={loading} emptyUserMessage="No users were found">
                         <Form.Group className="mb-3" controlId="search">
                             <Form.Control onChange={(event: ChangeEvent<HTMLInputElement>) => onSearch(event, data)} type="text" placeholder="Search" />
                         </Form.Group>
@@ -49,7 +49,7 @@ const Sections = () => {
                 )}
             </Tab>
             <Tab eventKey="blocked" title="Blocked">
-                <UserList users={blockedList} loading={loading} />
+                <UserList users={blockedList} loading={loading} emptyUserMessage="You have not blocked any users" />
             </Tab>
         </Tabs>
     );
