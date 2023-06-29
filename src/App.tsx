@@ -127,10 +127,10 @@ const App = () => {
                               </Row>
                               <Row>
                                   <Col>
-                                      <Badge bg="info">2</Badge><p>Followers</p>
+                                      <Badge bg="info">{followingCount}</Badge><p>Following</p>
                                   </Col>
                                   <Col>
-                                      <Badge bg="info">{followingCount}</Badge><p>Following</p>
+                                      <Badge bg="info">{blockedCount}</Badge><p>Blocked</p>
                                   </Col>
                               </Row>
                           </div>
