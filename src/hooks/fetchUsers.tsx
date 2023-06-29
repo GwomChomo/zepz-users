@@ -4,7 +4,7 @@ import axios from "axios";
 const url = 'http://api.stackexchange.com/2.2/users?pagesize=20&order=desc&sort=reputation&site=stackoverflow';
 
 export interface User {
-    user_id: string;
+    user_id: number;
     location: string;
     profile_image: string;
     display_name: string;

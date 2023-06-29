@@ -54,7 +54,7 @@ const UserListItem: React.FC<UserListItemProps> = (props) => {
     }, []);
 
     return (
-        <Card bg={isBlocked ? "secondary" : undefined} className="mb-2 mt-2 right-shadow">
+        <Card data-testid="user-list-item" bg={isBlocked ? "secondary" : undefined} className="mb-2 mt-2 right-shadow">
            <Row onClick={!isBlocked ? onSub : undefined} className="p-3 clickable"
                 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                <Col xs={3} sm={3} md={3} lg={3}>
@@ -78,12 +78,12 @@ const UserListItem: React.FC<UserListItemProps> = (props) => {
                 <Card.Body>
                     <Row sm={8} md={6}>
                         <Col>
-                            <Badge onClick={toggleFollowUser} className="clickable" bg="dark" pill>
+                            <Badge data-testid="follow-button"  onClick={toggleFollowUser} className="clickable" bg="dark" pill>
                                 {isFollowing ? 'Unfollow' : 'Follow'}
                             </Badge>
                         </Col>
                         <Col>
-                            <Badge onClick={blockUser} className="clickable" bg={isBlocked ? "success" : "danger"} pill>
+                            <Badge data-testid="block-button" onClick={blockUser} className="clickable" bg="danger" pill>
                                 Block
                             </Badge>
                         </Col>
