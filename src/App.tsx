@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useEffect, useState} from 'react';
+import React, {createContext, useEffect, useState} from 'react';
 import {Container, Row, Col, Image, Card, Badge} from "react-bootstrap";
 import profilePic from './profile_picture.jpeg'
 import './App.css';

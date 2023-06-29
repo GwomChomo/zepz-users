@@ -7,12 +7,12 @@ import {User} from "../../hooks/fetchUsers";
 interface UserListProps {
     users: User[];
     loading: boolean;
-    error: any;
     children?: React.ReactNode;
 }
 
 const UserList: React.FC<UserListProps> = (props) => {
-    const { users, error, loading, children } = props;
+    const { users, loading, children } = props;
+
     return (
         <div style={{ display: 'flex', flexDirection: 'column'}}>
             <Row>
@@ -21,7 +21,7 @@ const UserList: React.FC<UserListProps> = (props) => {
                 </Col>
             </Row>
             <Accordion>
-                {users && users.map((user, index) => <UserListItem index={index} user={user} />)}
+                {users && users.map((user, index) => <UserListItem key={user.user_id} index={index} user={user} />)}
             </Accordion>
             <div style={{ alignSelf: 'center'}}>{loading && <Spinner animation="grow" />}</div>
         </div>

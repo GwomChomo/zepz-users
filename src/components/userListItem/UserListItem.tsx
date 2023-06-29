@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from "react";
 import {Accordion, Badge, Card, Col, Image, Row, useAccordionButton} from "react-bootstrap";
 import {User} from "../../hooks/fetchUsers";
 import '../../App.css';
@@ -17,23 +17,9 @@ const UserListItem: React.FC<UserListItemProps> = (props) => {
 
     const onSub = useAccordionButton(`${index}`);
 
-    const checkIsFollowing = () => {
-        const items = JSON.parse(localStorage.getItem('followingList') || "false");
-        if (items) {
-            if (items[user.user_id]) setIsFollowing(true);
-        }
-    }
-
     const toggleFollowUser = () => {
         setFollowingUserToStorage(user, isFollowing ? OPERATIONS.remove : OPERATIONS.add);
         setIsFollowing(!isFollowing);
-    }
-
-    const checkIsBlocked = () => {
-        const items = JSON.parse(localStorage.getItem('blockedList') || "false");
-        if (items) {
-            if (items[user.user_id]) setIsBlocked(true);
-        }
     }
 
     const blockUser = () => {
@@ -46,12 +32,25 @@ const UserListItem: React.FC<UserListItemProps> = (props) => {
     }
 
     useEffect(() => {
+        const checkIsBlocked = () => {
+            const items = JSON.parse(localStorage.getItem('blockedList') || "false");
+            if (items) {
+                if (items[user.user_id]) setIsBlocked(true);
+            }
+        }
         checkIsBlocked();
-    }, []);
+    }, [user.user_id]);
 
     useEffect(() => {
+        const checkIsFollowing = () => {
+            const items = JSON.parse(localStorage.getItem('followingList') || "false");
+            if (items) {
+                if (items[user.user_id]) setIsFollowing(true);
+            }
+        }
+
         checkIsFollowing();
-    }, []);
+    }, [user.user_id]);
 
     return (
         <Card data-testid="user-list-item" bg={isBlocked ? "secondary" : undefined} className="mb-2 mt-2 right-shadow">
@@ -78,12 +77,14 @@ const UserListItem: React.FC<UserListItemProps> = (props) => {
                 <Card.Body>
                     <Row sm={8} md={6}>
                         <Col>
-                            <Badge data-testid="follow-button"  onClick={toggleFollowUser} className="clickable" bg="dark" pill>
+                            <Badge data-testid="follow-button"
+                                   onClick={toggleFollowUser} className="clickable" bg="dark" pill>
                                 {isFollowing ? 'Unfollow' : 'Follow'}
                             </Badge>
                         </Col>
                         <Col>
-                            <Badge data-testid="block-button" onClick={blockUser} className="clickable" bg="danger" pill>
+                            <Badge data-testid="block-button"
+                                   onClick={blockUser} className="clickable" bg="danger" pill>
                                 Block
                             </Badge>
                         </Col>
