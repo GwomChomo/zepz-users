@@ -52,4 +52,5 @@ The main design decisions were as follows:
 - Design: 1 hour
 - Implementation - 3 hours
 - Testing - 1 hour
- - Review - 30 minutes
+- Review - 30 minutes
+- Documentation - 30 minutes
